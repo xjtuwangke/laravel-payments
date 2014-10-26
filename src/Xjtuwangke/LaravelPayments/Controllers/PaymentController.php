@@ -23,6 +23,10 @@ class PaymentController extends \Controller{
         \Route::get( '/pay/pay_form_submit.do', [ 'before' => 'csrf' , 'as' => 'pay.form_submit' , 'uses' => "{$class}@submit" ] );
         \Route::post( '/pay/{id}/return.do', [ 'as' => 'pay.return' , 'uses' => "{$class}@server_return" ] );
         \Route::post( '/pay/{id}/notify.do', [ 'as' => 'pay.notify' , 'uses' => "{$class}@server_notify" ] );
+
+        \Route::get( '/pay/success/{order_no}' , [ 'as' => 'pay.success' , 'uses' => "{$class}@success" ] );
+
+        \Route::get( '/pay/fail/{order_no}' , [ 'as' => 'pay.fail' , 'uses' => "{$class}@fail" ] );
     }
 
     public function submit(){
@@ -131,6 +135,13 @@ class PaymentController extends \Controller{
         }
     }
 
+    public function success(){
+        return \View::make( 'laravel-payments::result')->with( 'title' , '支付成功' )->with( 'content' , '<h2>您已经支付成功</h2>' );
+    }
+
+    public function fail(){
+        return \View::make( 'laravel-payments::result')->with( 'title' , '支付失败' )->with( 'content' , '<h2>支付失败</h2>' );
+    }
 
 
 }

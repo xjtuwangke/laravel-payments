@@ -55,6 +55,11 @@ class OrderModel extends \BasicModel{
         }
     }
 
+    public function pay( $amount ){
+        $this->need_pay = $this->need_pay - $amount;
+        $this->save();
+    }
+
     public function setGoodsAttribute( $value ){
         $this->attributes['goods'] = serialize( $value );
     }

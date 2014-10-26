@@ -8,7 +8,7 @@
 
 return array(
     'site' => '电商网站' ,
-    'pay_success_action' => '',
-    'pay_fail_action' => '' ,
+    'pay_success_action' => 'pay.success',
+    'pay_fail_action' => 'pay.fail' ,
     'cert' => __DIR__ . '../../cert/' ,
 );
