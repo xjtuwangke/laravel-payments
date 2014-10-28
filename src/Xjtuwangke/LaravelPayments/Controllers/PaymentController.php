@@ -21,7 +21,7 @@ class PaymentController extends \Controller{
         $class = get_class();
         \Route::get( '/pay/{id}/payto.do/{order_no}', [ 'as' => 'pay.payto' , 'uses' => "{$class}@payto" ] );
         \Route::get( '/pay/pay_form_submit.do', [ 'before' => 'csrf' , 'as' => 'pay.form_submit' , 'uses' => "{$class}@submit" ] );
-        \Route::post( '/pay/{id}/return.do', [ 'as' => 'pay.return' , 'uses' => "{$class}@server_return" ] );
+        \Route::any( '/pay/{id}/return.do', [ 'as' => 'pay.return' , 'uses' => "{$class}@server_return" ] );
         \Route::post( '/pay/{id}/notify.do', [ 'as' => 'pay.notify' , 'uses' => "{$class}@server_notify" ] );
 
         \Route::get( '/pay/success/{order_no}' , [ 'as' => 'pay.success' , 'uses' => "{$class}@success" ] );
