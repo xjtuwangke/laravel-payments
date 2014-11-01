@@ -11,6 +11,8 @@
         "php": ">=5.4.0",
         "illuminate/support": "4.2.*"
         , "xjtuwangke/laravel-models": "dev-master"
+        , "omnipay/omnipay": "~2.0"
+        , "lokielse/omnipay-alipay": "dev-master"
     },
     "autoload": {
         "classmap": [
