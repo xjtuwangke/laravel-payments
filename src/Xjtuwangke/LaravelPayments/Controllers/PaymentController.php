@@ -61,10 +61,18 @@ class PaymentController extends \Controller{
 
         # new order
         # db
+
+        if ( \App::environment( 'local', 'alpha' , 'beta' ) )
+        {
+            $total_fee = 0.01;
+        }
+        else{
+            $total_fee = $order->need_pay;
+        }
         $order    = array(
             'out_trade_no' => $order->order_no ,
             'subject'      => Config::get( 'laravel-payments::config.site' ) . ' 订单号:' . $order_no, //order title
-            'total_fee'    => $order->need_pay ,
+            'total_fee'    => $total_fee ,
         );
         $response = $gateway->purchase($order)->send();
         # return a payto_url, and client redirect to alipay.
