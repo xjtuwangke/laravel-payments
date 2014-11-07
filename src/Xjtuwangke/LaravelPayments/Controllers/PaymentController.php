@@ -22,7 +22,7 @@ class PaymentController extends \Controller{
         \Route::get( '/pay/{id}/payto.do/{order_no}', [ 'as' => 'pay.payto' , 'uses' => "{$class}@payto" ] );
         \Route::get( '/pay/pay_form_submit.do', [ 'before' => 'csrf' , 'as' => 'pay.form_submit' , 'uses' => "{$class}@submit" ] );
         \Route::any( '/pay/{id}/return.do', [ 'as' => 'pay.return' , 'uses' => "{$class}@server_return" ] );
-        \Route::post( '/pay/{id}/notify.do', [ 'as' => 'pay.notify' , 'uses' => "{$class}@server_notify" ] );
+        \Route::post( '/pay/{id}/notify.do', [ 'as' => 'pay.notify' , 'uses' => "{$class}@notify_return" ] );
 
         \Route::get( '/pay/success/{order_no}' , [ 'as' => 'pay.success' , 'uses' => "{$class}@success" ] );
 
